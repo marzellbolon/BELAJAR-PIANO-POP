@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritme &amp; Not — Piano Pop Kids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="decor"></div>
+  <h1><span class="note-emoji">🎹</span> Ritme &amp; Not Pop</h1>
+  <p>Metronome seru + belajar nilai not, buat kelas piano pop kamu!</p>
+</header>
+
+<nav class="tabs">
+  <button id="tabBtnMetronome" class="active" onclick="switchTab('metronome')">🥁 Metronome</button>
+  <button id="tabBtnNotes" onclick="switchTab('notes')">🎵 Nilai Not</button>
+</nav>
+
+<main>
+  <!-- METRONOME PANEL -->
+  <section id="panelMetronome" class="panel">
+    <h2 class="section-title">Ketuk Bareng Bola V!</h2>
+
+    <div class="stage">
+      <div class="spotlight"></div>
+      <div class="vguide" id="vGuide"></div>
+      <div class="ball" id="ball"></div>
+      <div class="floor-label">turun ½ ketuk • naik ½ ketuk = 1 ketuk</div>
+    </div>
+
+    <div class="beat-dots" id="beatDots"></div>
+
+    <div class="bpm-row">
+      <button class="bpm-btn" onclick="changeBpm(-5)">−</button>
+      <div class="bpm-display"><span id="bpmVal">100</span><span>BPM</span></div>
+      <button class="bpm-btn" onclick="changeBpm(5)">+</button>
+    </div>
+    <div class="row-center" style="max-width:320px; margin-left:auto; margin-right:auto; width:100%;">
+      <input type="range" id="bpmSlider" min="40" max="208" value="100" oninput="setBpm(this.value)">
+    </div>
+    <div class="row-center" id="tempoWordRow">
+      <span class="tempo-word" id="tempoWord">Moderato</span>
+    </div>
+
+    <div class="controls-grid">
+      <select class="pill" id="timeSig" onchange="updateBeatDots()">
+        <option value="2">2/4</option>
+        <option value="3">3/4</option>
+        <option value="4" selected>4/4</option>
+      </select>
+    </div>
+
+    <button class="play-btn" id="playBtn" onclick="toggleMetronome()">▶ Mulai</button>
+
+    <p class="hint">Tekan Mulai lalu ajak murid berhitung: "1... 2... 3... 4..." sambil lihat bolanya turun-naik!</p>
+  </section>
+
+  <!-- NOTE VALUES PANEL -->
+  <section id="panelNotes" class="panel hidden">
+    <h2 class="section-title">Kenalan Sama Nilai Not</h2>
+    <p class="hint" style="margin-bottom:16px;">Tap kartunya buat lihat, lalu tekan 🔊 Dengarkan buat dengar ritmenya (pakai tempo metronome saat ini).</p>
+
+    <div class="note-grid" id="noteGrid"></div>
+
+    <div class="bar-compare">
+      <div class="bar-row"><div class="bar-label">Not Penuh</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+      <div class="bar-row"><div class="bar-label">Not 1/2</div><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div></div>
+      <div class="bar-row"><div class="bar-label">Not 1/4</div><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div></div>
+      <div class="bar-row"><div class="bar-label">Not 1/8</div><div class="bar-track"><div class="bar-fill" style="width:12.5%"></div></div></div>
+      <div class="bar-row"><div class="bar-label">Not 1/16</div><div class="bar-track"><div class="bar-fill" style="width:6.25%"></div></div></div>
+    </div>
+    <p class="hint">Panjang batang = lama not itu dibunyikan, dibandingkan Not Penuh (4 ketuk).</p>
+  </section>
+
+  <footer>Dibuat untuk kelas piano pop 🎶</footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
